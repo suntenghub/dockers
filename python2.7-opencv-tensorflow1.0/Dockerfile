@@ -12,16 +12,20 @@ MAINTAINER Teng Sun <sunteng@xingshulin.com>
 
 ARG OPENCV_VERSION="3.2.0.7"
 
-# Install OpenCV 3.x
+# Install 
 # =================================
 
 # install dependencies
 RUN apt-get update \
   && apt-get install -y libglib2.0-0
 
-# install
+# install OpenCV 3.x
 RUN pip install --upgrade pip \
-  && pip install opencv-python==$OPENCV_VERSION
+  && pip install opencv-python==$OPENCV_VERSION \
+
+# install Tensorflow 1.x
+  && pip install tensorflow
+
 
 # Remove all tmpfile
 # =================================
