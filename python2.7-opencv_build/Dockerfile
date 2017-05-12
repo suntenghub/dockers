@@ -16,14 +16,13 @@ ARG OPENCV_VERSION="3.1.0"
 # =================================
 
 # install dependencies
-RUN apt-get update -y \
-  && apt-get upgrade -y  \
-  && apt-get install apt-utils build-essential curl cmake -y \
-  && apt-get install libjpeg-dev libtiff-dev libjasper-dev libpng-dev -y \
-  && apt-get install pkg-config libgtk2.0-dev -y
+RUN apt-get update -qqy \
+  && apt-get install apt-utils build-essential curl cmake -qqy --no-install-recommends \
+  && apt-get install libjpeg-dev libtiff-dev libjasper-dev libpng-dev -qqy --no-install-recommends \
+  && apt-get install pkg-config libgtk2.0-dev -qqy --no-install-recommends
 
 RUN pip install --upgrade pip \
-  && pip install numpy
+  && pip install --no-cache-dir numpy
 
 # download opencv
 RUN curl -sL https://github.com/Itseez/opencv/archive/$OPENCV_VERSION.tar.gz | tar xvz -C /tmp \

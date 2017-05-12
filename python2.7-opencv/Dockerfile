@@ -16,12 +16,12 @@ ARG OPENCV_VERSION="3.2.0.7"
 # =================================
 
 # install dependencies
-RUN apt-get update \
-  && apt-get install -y libglib2.0-0
+RUN apt-get update -qqy \
+  && apt-get install -qqy --no-install-recommends libglib2.0-0
 
 # install
 RUN pip install --upgrade pip \
-  && pip install opencv-python==$OPENCV_VERSION
+  && pip install --no-cache-dir opencv-python==$OPENCV_VERSION
 
 # Remove all tmpfile
 # =================================
